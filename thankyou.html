@@ -137,6 +137,11 @@
             z-index: 2;
         }
 
+        @media (min-width: 481px) and (max-width: 1024px) {
+            .curve-section::after {
+                height: 20vh;
+            }
+        }
 
         /* زر التمرير للأسفل */
         .scroll-down {
@@ -413,7 +418,7 @@
 <body class="font-sans">
 
     <section
-        class="relative pt-16 md:pt-16 md:pb-0 lg:py-24 px-4  min-h-[100vh] md:min-h-[56vh]  lg:min-h-[75vh]  h-auto md:px-20 lg:px-24  justify-center curve-section z-[100]"
+        class="relative pt-16 md:pt-16 md:pb-0 lg:py-24 px-4  min-h-[80vh] md:min-h-[50vh]  lg:min-h-[75vh]  h-auto md:px-20 lg:px-24  justify-center curve-section z-[100]"
         id="main-section">
 
         <!-- المحتوى النصي مع تأثيرات الكتابة الجديدة -->
@@ -433,18 +438,18 @@
             <!-- العناصر مع تأثيرات الظهور التسلسلي -->
             <div class="flex flex-col md:flex-row items-center justify-center gap-4 my-6">
                 <div id="card-1"
-                    class="sequence-animate flex items-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 text-white text-lg md:text-xl">
-                    <span class="flex items-center flex-wrap gap-2">
+                    class="sequence-animate flex items-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 text-white text-lg md:text-lg lg:text-xl">
+                    <span class="flex items-center flex-wrap gap-2 ">
                         <span class="flex items-center">
                             <i class="fas fa-calendar-alt ml-2 text-[var(--accent-gold)]"></i>
-                            الخميس 15 يونيو
+                            الثلاثاء 13 مايو
                         </span>
                         <span
                             class="bg-[var(--primary-color)] text-white font-bold px-3 py-1 rounded-lg flex items-center">
                             2025
                         </span>
                         <span class="flex items-center">
-                            7:00 مساءً (توقيت كندا)
+                            7:00 مساءً (توقيت مكة المكرمة)
                         </span>
                     </span>
                 </div>
@@ -494,7 +499,7 @@
                         بانتظاركم في ندوة مميزة
                     </p>
                     <p class="text-lg font-semibold mb-1">
-                        يوم 15 يونيو 2025 - الساعة 7:00 مساءً بتوقيت كندا
+                        الثلاثاء 13 مايو 2025 - 7:00 مساءً (بتوقيت مكة المكرمة)
                     </p>
                     <p class="text-lg text-yellow-600 font-bold">
                         💡 الندوة مجانية بالكامل
@@ -503,7 +508,7 @@
 
                 <div class="video-placeholder">
                     <video id="webinar-video" controls playsinline style="width: 100%; height: 100%;">
-                        <source src="./assets/thankyou (2).mp4" type="video/mp4">
+                        <source src="./assets/thankyou.mp4" type="video/mp4">
                         <source src="./assets/video.webm" type="video/webm">
                         Your browser does not support the video tag.
                     </video>
@@ -615,7 +620,7 @@
                 const cursor = document.querySelector('.typing-cursor');
                 setTimeout(() => cursor.style.animation = 'blink 0.7s infinite', 10);
                 animateSequence();
-            }, 300);
+            }, 200);
 
             function animateSequence() {
                 const elements = [

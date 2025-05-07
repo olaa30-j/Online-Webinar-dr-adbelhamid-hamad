@@ -2,19 +2,51 @@
 const CONFIG = {
     APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzmuctpf-wvcIimvSykxwCWu9yv0R4ustyJGhAUiL206ojcou6s8X-wdN1UJ6y9gPay/exec",
     WEBINAR_TITLE: "ألم الأعصاب السكري: أحدث طرق التشخيص والعلاج",
-    WEBINAR_DATE: "15 يونيو 2025",
-    WEBINAR_TIME: "7:00 مساءً بتوقيت كندا",
+    WEBINAR_DATE: "13 مايو 2025",
+    WEBINAR_TIME: "7:00 مساءً بتوقيت مكة المكرمة",
     WEBINAR_LINK: "https://zoom.us/j/123456789",
     COMPANY_NUMBER: "201200241817",
     COMPANY_EMAIL: "olaadel.967@gmail.com",
     WEBSITE_NAME: "موقع_الندوات_الطبية",
 
     COUNTRIES: [
-        { code: "EG", name: "مصر", dialCode: "20", flag: "🇪🇬" },
-        { code: "SA", name: "السعودية", dialCode: "966", flag: "🇸🇦" },
-        { code: "AE", name: "الإمارات", dialCode: "971", flag: "🇦🇪" },
-        { code: "KW", name: "الكويت", dialCode: "965", flag: "🇰🇼" },
-        { code: "QA", name: "قطر", dialCode: "974", flag: "🇶🇦" }
+        { code: "EG", name: "مصر", dialCode: "20" },
+        { code: "SA", name: "السعودية", dialCode: "966" },
+        { code: "AE", name: "الإمارات", dialCode: "971" },
+        { code: "KW", name: "الكويت", dialCode: "965" },
+        { code: "QA", name: "قطر", dialCode: "974" },
+        { code: "BH", name: "البحرين", dialCode: "973" },
+        { code: "OM", name: "عمان", dialCode: "968" },
+        { code: "LY", name: "ليبيا", dialCode: "218" },
+        { code: "DZ", name: "الجزائر", dialCode: "213" },
+        { code: "MA", name: "المغرب", dialCode: "212" },
+        { code: "TN", name: "تونس", dialCode: "216" },
+        { code: "JO", name: "الأردن", dialCode: "962" },
+        { code: "LB", name: "لبنان", dialCode: "961" },
+        { code: "SY", name: "سوريا", dialCode: "963" },
+        { code: "IQ", name: "العراق", dialCode: "964" },
+        { code: "SD", name: "السودان", dialCode: "249" },
+        { code: "PS", name: "فلسطين", dialCode: "970" },
+        { code: "MR", name: "موريتانيا", dialCode: "222" },
+        { code: "YE", name: "اليمن", dialCode: "967" },
+        { code: "US", name: "الولايات المتحدة", dialCode: "1" },
+        { code: "CA", name: "كندا", dialCode: "1" },
+        { code: "GB", name: "المملكة المتحدة", dialCode: "44" },
+        { code: "FR", name: "فرنسا", dialCode: "33" },
+        { code: "DE", name: "ألمانيا", dialCode: "49" },
+        { code: "IT", name: "إيطاليا", dialCode: "39" },
+        { code: "ES", name: "إسبانيا", dialCode: "34" },
+        { code: "CN", name: "الصين", dialCode: "86" },
+        { code: "IN", name: "الهند", dialCode: "91" },
+        { code: "JP", name: "اليابان", dialCode: "81" },
+        { code: "KR", name: "كوريا الجنوبية", dialCode: "82" },
+        { code: "BR", name: "البرازيل", dialCode: "55" },
+        { code: "AR", name: "الأرجنتين", dialCode: "54" },
+        { code: "AU", name: "أستراليا", dialCode: "61" },
+        { code: "NZ", name: "نيوزيلندا", dialCode: "64" },
+        { code: "ZA", name: "جنوب أفريقيا", dialCode: "27" },
+        { code: "NG", name: "نيجيريا", dialCode: "234" },
+        { code: "KE", name: "كينيا", dialCode: "254" }
     ]
 };
 
@@ -225,7 +257,7 @@ function initChat() {
 function initCountdown() {
     // Parse Arabic date from CONFIG
     const webinarDate = parseArabicDate(CONFIG.WEBINAR_DATE + " " + CONFIG.WEBINAR_TIME) || 
-                       new Date('June 15, 2025 19:00:00 GMT-0400'); // Fallback for Canada time
+                        new Date('May 13, 2025 19:00:00 GMT+0300');
     
     function updateCountdown() {
         const now = new Date().getTime();
@@ -362,37 +394,231 @@ async function validatePhone() {
         errorMessage = 'رقم الهاتف مطلوب';
     } else {
         switch (countryCode) {
-            case 'EG':
-                if (!/^(12|15|11|10)\d{8,9}$/.test(phoneNumber)) {
+            // الدول العربية
+            case 'EG': // مصر
+                if (!/^(10|11|12|15)\d{8}$/.test(phoneNumber)) {
                     isValid = false;
-                    errorMessage = 'رقم مصر يجب أن يبدأ ب 11, 15, 12 أو 10 ويتكون من 10-11 رقم';
+                    errorMessage = 'رقم مصر يجب أن يبدأ ب 10, 11, 12 أو 15 ويتكون من 10 أرقام';
                 }
                 break;
-            case 'SA':
-            case 'AE':
+            case 'SA': // السعودية
+            case 'AE': // الإمارات
+            case 'QA': // قطر
+            case 'BH': // البحرين
+            case 'OM': // عمان
                 if (!/^5\d{8}$/.test(phoneNumber)) {
                     isValid = false;
-                    errorMessage = 'رقم الخليج يجب أن يبدأ ب 5 ويتكون من 9 أرقام';
+                    errorMessage = 'رقم الهاتف يجب أن يبدأ ب 5 ويتكون من 9 أرقام';
                 }
                 break;
-            case 'KW':
+            case 'KW': // الكويت
                 if (!/^[569]\d{7}$/.test(phoneNumber)) {
                     isValid = false;
                     errorMessage = 'رقم الكويت يجب أن يبدأ ب 5, 6 أو 9 ويتكون من 8 أرقام';
                 }
                 break;
-            case 'QA':
-                if (!/^[3-7]\d{7}$/.test(phoneNumber)) {
+            case 'IQ': // العراق
+                if (!/^7[3-9]\d{8}$/.test(phoneNumber)) {
                     isValid = false;
-                    errorMessage = 'رقم قطر يجب أن يبدأ ب 3-7 ويتكون من 8 أرقام';
+                    errorMessage = 'رقم العراق يجب أن يبدأ ب 7 متبوعًا برقم بين 3-9 ويتكون من 10 أرقام';
                 }
                 break;
+            case 'JO': // الأردن
+                if (!/^7[789]\d{7}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'رقم الأردن يجب أن يبدأ ب 77, 78 أو 79 ويتكون من 9 أرقام';
+                }
+                break;
+            case 'LB': // لبنان
+                if (!/^(3|7[016]|8[1-9])\d{6}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'رقم لبنان يجب أن يبدأ ب 3, 70, 71, 76 أو 8x ويتكون من 7-8 أرقام';
+                }
+                break;
+            case 'PS': // فلسطين
+                if (!/^5[69]\d{7}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'رقم فلسطين يجب أن يبدأ ب 56 أو 59 ويتكون من 9 أرقام';
+                }
+                break;
+            case 'SY': // سوريا
+                if (!/^9\d{8}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'رقم سوريا يجب أن يبدأ ب 9 ويتكون من 9 أرقام';
+                }
+                break;
+            case 'YE': // اليمن
+                if (!/^7[0-9]\d{7}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'رقم اليمن يجب أن يبدأ ب 7 ويتكون من 9 أرقام';
+                }
+                break;
+            case 'DZ': // الجزائر
+                if (!/^(5|6|7)\d{8}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'رقم الجزائر يجب أن يبدأ ب 5, 6 أو 7 ويتكون من 9 أرقام';
+                }
+                break;
+            case 'MA': // المغرب
+                if (!/^(6|7)\d{8}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'رقم المغرب يجب أن يبدأ ب 6 أو 7 ويتكون من 9 أرقام';
+                }
+                break;
+            case 'TN': // تونس
+                if (!/^[2459]\d{7}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'رقم تونس يجب أن يبدأ ب 2, 4, 5 أو 9 ويتكون من 8 أرقام';
+                }
+                break;
+            case 'LY': // ليبيا
+                if (!/^9[1-9]\d{7}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'رقم ليبيا يجب أن يبدأ ب 9 متبوعًا برقم بين 1-9 ويتكون من 9 أرقام';
+                }
+                break;
+            case 'SD': // السودان
+                if (!/^9[125]\d{7}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'رقم السودان يجب أن يبدأ ب 91, 92 أو 95 ويتكون من 9 أرقام';
+                }
+                break;
+                
+            // أمريكا الشمالية
+            case 'US': // الولايات المتحدة
+            case 'CA': // كندا (تمت إضافتها هنا)
+                if (!/^[2-9]\d{9}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'يجب أن يتكون رقم الهاتف من 10 أرقام ولا يبدأ ب 0 أو 1';
+                }
+                break;
+            case 'MX': // المكسيك
+                if (!/^[1-9]\d{9}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'يجب أن يتكون رقم الهاتف من 10 أرقام';
+                }
+                break;
+                
+            // أوروبا
+            case 'GB': // المملكة المتحدة
+                if (!/^7[1-9]\d{8}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'يجب أن يبدأ رقم الهاتف ب 7 ويتكون من 10 أرقام';
+                }
+                break;
+            case 'FR': // فرنسا
+                if (!/^[67]\d{8}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'يجب أن يبدأ رقم الهاتف ب 6 أو 7 ويتكون من 9 أرقام';
+                }
+                break;
+            case 'DE': // ألمانيا
+                if (!/^1[5-9]\d{8}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'يجب أن يبدأ رقم الهاتف ب 15-19 ويتكون من 10 أرقام';
+                }
+                break;
+            case 'IT': // إيطاليا
+                if (!/^3\d{8,9}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'يجب أن يبدأ رقم الهاتف ب 3 ويتكون من 9-10 أرقام';
+                }
+                break;
+            case 'ES': // إسبانيا
+                if (!/^[67]\d{8}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'يجب أن يبدأ رقم الهاتف ب 6 أو 7 ويتكون من 9 أرقام';
+                }
+                break;
+                
+            // آسيا
+            case 'CN': // الصين
+                if (!/^1[3-9]\d{9}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'يجب أن يبدأ رقم الهاتف ب 13-19 ويتكون من 11 رقمًا';
+                }
+                break;
+            case 'IN': // الهند
+                if (!/^[6-9]\d{9}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'يجب أن يبدأ رقم الهاتف ب 6-9 ويتكون من 10 أرقام';
+                }
+                break;
+            case 'JP': // اليابان
+                if (!/^0[789]\d{8}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'يجب أن يبدأ رقم الهاتف ب 07 أو 08 أو 09 ويتكون من 10 أرقام';
+                }
+                break;
+            case 'KR': // كوريا الجنوبية
+                if (!/^01[016789]\d{7,8}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'يجب أن يبدأ رقم الهاتف ب 010 أو 011 أو 016-019 ويتكون من 9-10 أرقام';
+                }
+                break;
+                
+            // أفريقيا
+            case 'NG': // نيجيريا
+                if (!/^[7-9]\d{9}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'يجب أن يبدأ رقم الهاتف ب 7-9 ويتكون من 10 أرقام';
+                }
+                break;
+            case 'ZA': // جنوب أفريقيا
+                if (!/^[6-8]\d{8}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'يجب أن يبدأ رقم الهاتف ب 6-8 ويتكون من 9 أرقام';
+                }
+                break;
+            case 'KE': // كينيا
+                if (!/^7\d{8}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'يجب أن يبدأ رقم الهاتف ب 7 ويتكون من 9 أرقام';
+                }
+                break;
+                
+            // أمريكا الجنوبية
+            case 'BR': // البرازيل
+                if (!/^[1-9]{2}9?[6-9]\d{7}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'رقم الهاتف البرازيلي غير صالح';
+                }
+                break;
+            case 'AR': // الأرجنتين
+                if (!/^[1-9]\d{9}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'يجب أن يتكون رقم الهاتف من 10 أرقام';
+                }
+                break;
+                
+            // أوقيانوسيا
+            case 'AU': // أستراليا
+                if (!/^04\d{8}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'يجب أن يبدأ رقم الهاتف ب 04 ويتكون من 10 أرقام';
+                }
+                break;
+            case 'NZ': // نيوزيلندا
+                if (!/^02[125789]\d{6,7}$/.test(phoneNumber)) {
+                    isValid = false;
+                    errorMessage = 'رقم الهاتف النيوزيلندي غير صالح';
+                }
+                break;
+
+            // الحالة الافتراضية للدول الأخرى
+            default:
+                if (phoneNumber.length < 5 || phoneNumber.length > 15) {
+                    isValid = false;
+                    errorMessage = 'رقم الهاتف يجب أن يكون بين 5 إلى 15 رقمًا';
+                }
         }
     }
 
     if (isValid) {
         const selectedCountry = CONFIG.COUNTRIES.find(c => c.code === countryCode);
-        document.getElementById('full-phone-number').value = `+${selectedCountry.dialCode}${phoneNumber}`;
+        if (selectedCountry) {
+            document.getElementById('full-phone-number').value = `+${selectedCountry.dialCode}${phoneNumber}`;
+        }
         hideError(errorElement);
     } else {
         showError(errorElement, errorMessage);
