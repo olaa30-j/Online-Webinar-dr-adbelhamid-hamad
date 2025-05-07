@@ -5,10 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (registrationData) {
         // عرض بيانات المستخدم
         displayRegistrationInfo(registrationData);
-        
-        // بدء تأثيرات الكتابة
-        startTypingEffects();
-        
+                
         // التحقق من وقت الندوة
         checkWebinarTime(registrationData.webinarDate, registrationData.webinarTime);
     } else {

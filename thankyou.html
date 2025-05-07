@@ -39,7 +39,8 @@
             background-attachment: fixed;
             background-position: center;
         }
-/* 
+
+        /* 
         .about-image {
             position: relative;
             display: flex;
@@ -136,7 +137,7 @@
             z-index: 2;
         }
 
-        
+
         /* زر التمرير للأسفل */
         .scroll-down {
             position: absolute;
@@ -322,23 +323,6 @@
             }
         }
 
-        .typing-text {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 2px solid transparent;
-            animation: typing 2s steps(40, end) forwards;
-        }
-
-        @keyframes typing {
-            from {
-                width: 0;
-            }
-
-            to {
-                width: 100%;
-            }
-        }
 
         .sequence-animate {
             opacity: 0;
@@ -436,7 +420,7 @@
         <div class="text-center  mb-12 md:mb-0 lg:pr-12 relative" style="z-index: 100;">
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6 text-center">
                 <div class="typing-container">
-                    <span id="typing-text" class="typing-text text-yellow-500 my-2"></span>
+                    <span id="typing-text" class="typing-text text-yellow-500 my-2">مبروك لقد نجحت فى التسجيل</span>
                     <span class="typing-cursor"></span>
                 </div>
                 <br>
@@ -471,11 +455,12 @@
                 </div>
             </div>
 
-            <p id="whatsapp-msg" 
-            class="sequence-animate mt-4 text-[var(--primary-blue)] text-md md:text-lg font-medium border-2 border-[var(--accent-gold)]/30 bg-gradient-to-r from-[var(--light-blue)]/50 to-[var(--secondary-color)] p-4 rounded-xl inline-block backdrop-blur-lg shadow-lg hover:shadow-[var(--accent-gold)]/20 transition-all duration-300">
-            <i class="fab fa-whatsapp mr-2 text-green-600"></i>
-            ستصلك رسالة تأكيد على <span class="text-green-600">الواتساب</span> تحتوي على <span class="underline">الرابط</span> 
-         </p>
+            <p id="whatsapp-msg"
+                class="sequence-animate mt-4 text-[var(--primary-blue)] text-md md:text-lg font-medium border-2 border-[var(--accent-gold)]/30 bg-gradient-to-r from-[var(--light-blue)]/50 to-[var(--secondary-color)] p-4 rounded-xl inline-block backdrop-blur-lg shadow-lg hover:shadow-[var(--accent-gold)]/20 transition-all duration-300">
+                <i class="fab fa-whatsapp mr-2 text-green-600"></i>
+                ستصلك رسالة تأكيد على <span class="text-green-600">الواتساب</span> تحتوي على <span
+                    class="underline">الرابط</span>
+            </p>
         </div>
 
 
@@ -507,19 +492,18 @@
                 <div class="mb-4 text-center text-white relative bottom-0" style="z-index: 100;">
                     <p class="text-2xl font-extrabold mb-2">
                         بانتظاركم في ندوة مميزة
-                      </p>
-                      <p class="text-lg font-semibold mb-1">
+                    </p>
+                    <p class="text-lg font-semibold mb-1">
                         يوم 15 يونيو 2025 - الساعة 7:00 مساءً بتوقيت كندا
-                      </p>
-                      <p class="text-lg text-yellow-600 font-bold">
+                    </p>
+                    <p class="text-lg text-yellow-600 font-bold">
                         💡 الندوة مجانية بالكامل
-                      </p>
+                    </p>
                 </div>
 
                 <div class="video-placeholder">
                     <video id="webinar-video" controls playsinline style="width: 100%; height: 100%;">
-                        <source src="./assets/thankyou (2).mp4"
-                            type="video/mp4">
+                        <source src="./assets/thankyou (2).mp4" type="video/mp4">
                         <source src="./assets/video.webm" type="video/webm">
                         Your browser does not support the video tag.
                     </video>
@@ -548,7 +532,8 @@
                 <div class="text-center">
                     <h3 class="text-lg font-bold mb-4">تابعنا على</h3>
                     <div class="flex justify-center gap-3">
-                        <a href="https://www.facebook.com/p/%D8%A7%D9%84%D8%AF%D9%83%D8%AA%D9%88%D8%B1-%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D8%AD%D9%85%D9%8A%D8%AF-%D8%AD%D9%85%D8%AF-100091952990054/?locale=ar_AR" class="social-icon">
+                        <a href="https://www.facebook.com/p/%D8%A7%D9%84%D8%AF%D9%83%D8%AA%D9%88%D8%B1-%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D8%AD%D9%85%D9%8A%D8%AF-%D8%AD%D9%85%D8%AF-100091952990054/?locale=ar_AR"
+                            class="social-icon">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                         <a href="https://x.com/abdulhamidhamad?lang=en" class="social-icon">
@@ -620,29 +605,17 @@
                         console.log('Auto-play was prevented, showing play button');
                         playButton.style.display = 'flex';
                     });
-            }, 3000);
+            }, 2000);
         });
     </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const text = "مبروك لقد نجحت فى التسجيل";
-            const typingElement = document.getElementById('typing-text');
-
-            typingElement.textContent = text;
-
             setTimeout(() => {
-                typingElement.style.animation = 'typing 2s steps(40, end) forwards';
-                setTimeout(() => {
-                    const cursor = document.querySelector('.typing-cursor');
-                    cursor.style.right = 'auto';
-                    cursor.style.left = '0';
-                    cursor.style.animation = 'none';
-                    setTimeout(() => cursor.style.animation = 'blink 0.7s infinite', 10);
-
-                    animateSequence();
-                }, 500);
-            }, 50);
+                const cursor = document.querySelector('.typing-cursor');
+                setTimeout(() => cursor.style.animation = 'blink 0.7s infinite', 10);
+                animateSequence();
+            }, 300);
 
             function animateSequence() {
                 const elements = [
@@ -655,7 +628,7 @@
                 elements.forEach((el, index) => {
                     setTimeout(() => {
                         el.classList.add('show');
-                    }, 10 * index);
+                    }, 5 * index);
                 });
             }
         });
