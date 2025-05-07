@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./assets/channels4_banner.jpg" type="image/x-icon">
+  <title>ندوة طبية - دكتور عبدالحميد حمد</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Swiper JS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+  <link rel="stylesheet" href="styles/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content" style="padding: 5rem 0; text-align: center;">
+        <p class="live-badge animate-pulse-slow">
+          <i class="fas fa-bell"></i>
+          <span id="live-badge">ندوة مباشرة مجانية</span>
+        </p>
+  
+        <h1 class="hero-title animate-fade-in text-gradient">علاج ألم الأعصاب السكري</h1>
+
+        <!-- العنوان الفرعي -->
+        <h2 class="hero-subtitle animate-fade-in">
+          <span style="text-decoration: underline; color: var(--accent-gold);">اكتشف</span> أفضل برنامج علاجي يأخذ بيدك
+          من المعاناة التي تعيشها
+          اليوم إلى حالة جميلة حتى تعيش حياتك بمتعة، <br> <span style="color: var(--accent-gold);">
+            عالج الألم و تمتع بحياتك
+          </span>
+        </h2>
+
+        <div class="countdown-container animate-fade-in">
+          <div class="countdown-label">الوقت المتبقي حتى الندوة:</div>
+          <div class="countdown-box">
+            <div class="countdown-item">
+              <div id="days" class="countdown-value days">00</div>
+              <div class="countdown-unit">أيام</div>
+            </div>
+            <div class="countdown-item">
+              <div id="hours" class="countdown-value hours">00</div>
+              <div class="countdown-unit">ساعات</div>
+            </div>
+            <div class="countdown-item">
+              <div id="minutes" class="countdown-value minutes">00</div>
+              <div class="countdown-unit">دقائق</div>
+            </div>
+            <div class="countdown-item">
+              <div id="seconds" class="countdown-value seconds">00</div>
+              <div class="countdown-unit">ثواني</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- زر التسجيل -->
+        <a href="#registration-card" class="register-btn animate-bounce-in">
+          <i class="fas fa-user-plus" style="margin: 0 0.5rem;"></i>
+          أحجز مقعدك الآن
+        </a>
+      </div>
+    </div>
+
+    <i class="fas fa-stethoscope medical-icon" style="font-size: 9rem; bottom: 5rem; right: 25%;"></i>
+
+    <!-- الأمواج المتحركة في الأسفل -->
+    <div class="waves-container">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 160 40" preserveAspectRatio="none">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18 v54h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(239, 248, 255,0.9)" />
+          <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(239, 248, 255,0.5)" />
+          <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(239, 248, 255,0.3)" />
+          <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(239, 248, 255,0.1)" />
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="video-section" style=" position: relative; z-index: 10;">
+    <div class="container">
+      <div class="video-container" style="max-width: 66rem; margin: 0 auto;">
+        <div class="medical-card animate-fade-in">
+          <video controls playsinline 
+            style="width: 100%; height: 100%;">
+            <source src="./assets/mainv.mp4"
+              type="video/mp4">
+            <source src="./assets/video.webm" type="video/webm">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-area">
+    <div class="about-image">
+      <div class="doctor-badge-overlay">
+        <img src="./assets/logo.png" alt="شعار الدكتور" class="doctor-logo">
+        <div class="doctor-specialty">
+          <span class="specialty-main">د. عبدالحميد حمد</span>
+          <span class="specialty-name">استشاري و خبير علاج الألم</span>
+        </div>
+      </div>
+      <img class="doctor-image" src="./assets/IMG0662.png" alt="الدكتور عبدالحميد حمد">
+    </div>
+    <div class="about-content">
+      <div class="title-wrapper">
+        <div class="sub-title-container">
+          <span class="sub-title-1">من هو المحاضر؟</span>
+          <div class="title-decoration">
+            <div class="decoration-dot"></div>
+            <div class="decoration-line"></div>
+          </div>
+        </div>
+      </div>
+      <h4>
+        استشاري وخبير عالمي في علاج الألم، وخاصة الألم العصبي،<br> من جامعة تورونتو بكندا.
+        <br> نشر العديد من الأبحاث العلمية في مجلات طبية مرموقة.
+      </h4>
+      <ul class="list">
+        <li><i class="fa fa-check"></i> مؤسّس ورئيس وحدة علاج الألم في عدة بلدان</li>
+        <li><i class="fa fa-check"></i> خبرة أكثر من ثلاثين عاماً في علاج آلاف الحالات</li>
+        <li><i class="fa fa-check"></i> ألّف عدة كتب عن علاج الألم</li>
+        <li><i class="fa fa-check"></i> عضو الجمعية الكندية لطب الألم</li>
+      </ul>
+      <a href="https://www.youtube.com/channel/UCUSHnuKCKYTrd29gm3eXt9g" target="_blank" class="default-btn">
+        <i class="fab fa-youtube"></i> قناتنا على اليوتيوب
+      </a>
+    </div>
+  </section>
+
+  <section class="services-area">
+    <div class="shape shape1">
+      <img src="./assets/shape1.png" alt="شكل زخرفي">
+    </div>
+    <div class="container-a">
+      <div class="section-title">
+        <span class="sub-title">ماذا ستستمع فى الندوة؟</span>
+        <h2>رعاية شاملة للمريض، وليس فقط علاج الأعراض</h2>
+        <a href="#registration-card" class="register-btn animate-bounce-in">
+          <i class="fas fa-user-plus" style="margin: 0 0.5rem;"></i>
+          أحجز مقعدك الآن
+        </a>
+      </div>
+
+      <div class="services-slider">
+        <!-- Swiper -->
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <!-- Card 1 -->
+            <div class="swiper-slide">
+              <div class="single-service">
+                <a href="#" class="d-block">
+                  <img src="./assets/1.jpg" alt="الألم العصبي السكري" class="service-image">
+                </a>
+                <div class="service-content">
+                  <div class="service-icon">
+                    <i class="fas fa-question-circle"></i>
+                  </div>
+                  <p><span>لماذا</span><br> تستمر المعاناة من الألم العصبي السكري؟ </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="swiper-slide">
+              <div class="single-service">
+                <a href="#" class="d-block">
+                  <img src="./assets/2.jpg" alt="البرنامج العلاجي" class="service-image">
+                </a>
+                <div class="service-content">
+                  <div class="service-icon">
+                    <i class="fas fa-clipboard-check"></i>
+                  </div>
+                  <p><span>البرنامج العلاجي</span><br> المتكامل والذي حقق أفضل نتائج</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="swiper-slide">
+              <div class="single-service">
+                <a href="#" class="d-block">
+                  <img src="./assets/3.jpg" alt="قصص المرضى" class="service-image">
+                </a>
+                <div class="service-content">
+                  <div class="service-icon">
+                    <i class="fas fa-user-check"></i>
+                  </div>
+                  <p><span>قصص حقيقية</span><br> من مرضى تحولت حياتهم نحو الأفضل </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="shape shape2">
+      <img src="./assets/shape2.png" alt="شكل زخرفي">
+    </div>
+  </section>
+
+  <div class="webinar-container  animate-fadeIn">
+    <div class="registration-card" id="registration-card">
+      <div class="ocean">
+        <div class="wave"></div>
+        <div class="wave"></div>
+      </div>
+      <div class="card-grid">
+        <!-- Event Details Section -->
+        <div class="event-details">
+
+          <div class="detail-item">
+            <div class="detail-icon">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+            <div class="detail-content">
+              <h3>التاريخ والوقت</h3>
+              <p>15 نوفمبر 2023 - 7:00 مساءً (بتوقيت كندا)</p>
+              <div class="countdown-timer" style="display: none;">
+                <span class="countdown-days days">00</span> يوم
+                <span class="countdown-hours hours">00</span> ساعة
+                <span class="countdown-minutes minutes">00</span> دقيقة
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <div class="detail-icon">
+              <i class="fas fa-video"></i>
+            </div>
+            <div class="detail-content">
+              <h3>طريقة الحضور</h3>
+              <p>عبر برنامج زووم - سيتم إرسال الرابط عبر الواتساب </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Registration Form Section -->
+        <div class="registration-form">
+          <form id="webinar-form" class="registration-form" novalidate>
+            <div class="form-group floating-label">
+              <input type="text" id="name" class="form-input" placeholder=" " required />
+              <label for="name" class="form-label">الاسم الكامل</label>
+              <p id="name-error" class="error-message hidden"></p>
+            </div>
+
+            <div class="grid-cols-2">
+              <div class="form-group floating-label">
+                <select id="country" class="form-select" required>
+                  <option value="" selected disabled>اختر الدولة</option>
+                  <option value="EG">مصر</option>
+                  <option value="SA">السعودية</option>
+                  <option value="AE">الإمارات</option>
+                  <option value="KW">الكويت</option>
+                </select>
+                <label for="country" class="form-label">الدولة</label>
+              </div>
+
+              <div class="form-group floating-label">
+                <input type="tel" id="phone" class="form-input" placeholder=" " required />
+                <label for="phone" class="form-label">رقم الواتساب</label>
+                <p id="phone-error" class="error-message hidden"></p>
+              </div>
+            </div>
+
+            <input type="hidden" id="full-phone-number" name="full-phone-number">
+
+            <div class="form-footer">
+              <button type="submit" class="submit-btn" id="submitBtn">
+                <span id="btnText">سجل الآن</span>
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fixed-buttons-container">
+    <!-- <div class="fixed-btn whatsapp-btn" id="fixedWhatsappBtn">
+      <div class="btn-icon">
+        <i class="fab fa-whatsapp"></i>
+      </div>
+      <span class="btn-text">تواصل معنا</span>
+      <div class="pulse-effect"></div>
+    </div> -->
+
+    <div class="fixed-btn chat-btn" id="fixedChatBtn">
+      <div class="btn-icon">
+        <i class="fas fa-comment-dots"></i>
+      </div>
+      <span class="btn-text">الأسئلة الشائعة</span>
+      <div class="pulse-effect"></div>
+      <div class="notification-badge">!</div>
+    </div>
+  </div>
+  <!-- نافذة الشات المحسنة -->
+  <div id="chatModal" class="chat-modal">
+    <div class="chat-header">
+      <div class="chat-header-content">
+        <div class="chat-avatar">
+          <img src="./assets/logo.png" alt="الدكتور">
+        </div>
+        <div class="chat-title">
+          <h3>مركز الدكتور عبدالحميد</h3>
+          <p>متصل الآن</p>
+        </div>
+      </div>
+      <div class="chat-actions">
+        <button id="minimizeChatBtn"><i class="fas fa-minus"></i></button>
+        <button id="closeChatBtn"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+
+    <div class="chat-body">
+      <div class="chat-date">اليوم</div>
+
+      <div class="message received">
+        <div class="message-content">
+          <div class="message-text">مرحباً بك! 👋 كيف يمكنني مساعدتك اليوم؟</div>
+          <div class="message-time">١٢:٠٠ م</div>
+        </div>
+      </div>
+
+      <div class="quick-questions">
+        <div class="section-title">اختر أحد الأسئلة الشائعة:</div>
+        <div class="quick-question" data-answer="answer1">ما هي مدة الندوة؟</div>
+        <div class="quick-question" data-answer="answer2">هل الندوة مجانية حقاً؟</div>
+        <div class="quick-question" data-answer="answer3">كيف يمكنني المشاركة؟</div>
+        <div class="quick-question" data-answer="answer4">هل يوجد تسجيل للندوة؟</div>
+      </div>
+    </div>
+
+    <div class="chat-footer">
+      <div class="typing-indicator">
+        <span>يكتب...</span>
+        <div class="typing-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <audio id="messageSound" src="./assets/message-notification.mp3" preload="auto"></audio>
+  </div>
+
+  <footer class="footer text-white py-12 lg:px-16 px-4 md:m-[1.5rem] lg:m-[3rem] mx-auto rounded-xl">
+    <div class="container mx-auto">
+      <!-- الصف العلوي -->
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
+        <!-- الشعار -->
+        <div class="text-center">
+          <a href="#" class="inline-block">
+            <img src="./assets/logo.png" alt="شعار المؤسسة" class="footer-logo h-24 mx-auto">
+          </a>
+        </div>
+
+        <!-- مواقع التواصل الاجتماعي -->
+        <div class="text-center">
+          <h3 class="text-lg font-bold mb-4">تابعنا على</h3>
+          <div class="flex justify-center gap-3">
+            <a href="https://www.facebook.com/p/%D8%A7%D9%84%D8%AF%D9%83%D8%AA%D9%88%D8%B1-%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D8%AD%D9%85%D9%8A%D8%AF-%D8%AD%D9%85%D8%AF-100091952990054/?locale=ar_AR"
+              class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://x.com/abdulhamidhamad?lang=en" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/dr.abdulhamid_hamad/" class="social-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com/channel/UCUSHnuKCKYTrd29gm3eXt9g" class="social-icon">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-white my-6"></div>
+
+      <!-- حقوق النشر -->
+      <div class="text-center text-white/70 text-sm">
+        <p>© 2025 جميع الحقوق محفوظة - مركز الدكتور عبدالحميد حمد</p>
+        <p class="mt-1">تصميم وتطوير بواسطة فريق المركز</p>
+      </div>
+  </footer>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="./scripts/scripts.js" defer></script>
+
+</body>
+
+</html>

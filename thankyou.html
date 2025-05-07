@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/channels4_banner.jpg" type="image/x-icon">
+    <title>ندوة دكتور عبدالحميد حمد</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary-color: rgb(7, 37, 91);
+            --secondary-color: rgb(239, 248, 255);
+            --bg-color: rgb(126, 133, 136);
+            --bg-gray: #7C94AC;
+            --accent-gold: #efbf04;
+            --light-yellow-text: rgba(223, 170, 36, 0.15);
+            --gray-text: #88A7B9;
+            --text-white: #fff;
+            --primary-blue: rgb(23, 44, 104);
+            --light-blue: rgb(230, 242, 245);
+            --light-logo-color: rgb(223, 217, 206);
+            --beige-100: #f5f1e9;
+            --beige-200: #e8e0d2;
+            --beige-300: #d9cfbc;
+            --beige-400: #c9bda6;
+        }
+
+        body {
+            background: var(--secondary-color);
+        }
+
+        #main-section {
+            background: linear-gradient(135deg, rgba(7, 37, 91, 0.7), rgba(7, 37, 91, 0.7)), url('./assets/webinar-dc.webp');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+/* 
+        .about-image {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+            z-index: 10;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 64%;
+            bottom: 1%;
+            left: 10%;
+            background: linear-gradient(45deg, var(--primary-color) 50%, rgba(19, 54, 123, 0.6) 100%);
+            border-radius: 20px;
+            z-index: 0;
+            transform: rotate(-5deg);
+            backdrop-filter: blur(8px);
+            opacity: 0.9;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            right: 10%;
+            bottom: 2%;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            background-color: rgba(11, 34, 77, 0.2);
+            border: 5px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            z-index: -1;
+            transform: rotate(10deg);
+            opacity: 0.9;
+        } */
+
+        /* .doctor-badge-overlay {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary-color);
+            border-radius: 20px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            z-index: 2;
+            width: 20vw !important;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(7, 37, 91, 0.1);
+        }
+
+        .doctor-logo {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: contain;
+            margin-left: 10px;
+        }
+
+        .doctor-specialty {
+            text-align: right;
+        }
+
+        .doctor-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            object-fit: cover;
+            z-index: 1;
+        } */
+
+        /* تأثير الانحناء للقسم السفلي */
+        .curve-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .curve-section::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 30vh;
+            background: var(--secondary-color);
+            border-radius: 50% 50% 0 0/ 100% 100% 0 0;
+            transform: scaleX(1.5);
+            z-index: 2;
+        }
+
+        
+        /* زر التمرير للأسفل */
+        .scroll-down {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-down-btn {
+            width: 40px;
+            height: 60px;
+            border: 2px solid var(--primary-color);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .scroll-down-btn:hover {
+            background-color: rgba(7, 37, 91, 0.1);
+        }
+
+        .scroll-down-btn::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            animation: scrollDown 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        @keyframes scrollDown {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(15px);
+                opacity: 0;
+            }
+        }
+
+        .video-section {
+            position: relative;
+            background: var(--secondary-color);
+            padding: 3rem 0;
+            margin-top: -1px;
+            overflow: hidden;
+        }
+
+        .video-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('./assets/sec2.gif') center/cover no-repeat;
+            opacity: 0.1;
+            transform: rotate(25deg);
+            z-index: 0;
+        }
+
+        .video-container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--primary-color);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px -20px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-placeholder {
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .webinar-date {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        /* النص المميز */
+        .highlight-text {
+            color: var(--secondary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight-text::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background-color: var(--accent-gold);
+            opacity: 0.4;
+            z-index: -1;
+            border-radius: 3px;
+        }
+
+        /* تعديلات للجوال */
+        @media (max-width: 767px) {
+            .video-placeholder {
+                height: 250px;
+            }
+
+            .doctor-image {
+                max-height: 400px;
+            }
+
+            .about-image::before,
+            .about-image::after {
+                width: 60%;
+                height: 40%;
+            }
+        }
+
+        .typing-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .typing-cursor {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 1.2em;
+            background-color: #f59e0b;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .typing-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid transparent;
+            animation: typing 2s steps(40, end) forwards;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        .sequence-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .sequence-animate.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        .footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-blue));
+            border-top: 3px solid var(--beige-300);
+            position: relative;
+            margin-bottom: 2%;
+        }
+
+        .footer-logo {
+            transition: transform 0.3s ease;
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 50%;
+            color: var(--primary-blue);
+            transition: all 0.3s ease;
+            border: 1px solid var(--beige-400);
+        }
+
+        .social-icon:hover {
+            background: var(--beige-300);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(7, 37, 91, 0.1);
+        }
+
+        .home-btn {
+            background: linear-gradient(to left, white, var(--beige-200));
+            color: var(--primary-color);
+            border: 1px solid var(--beige-400);
+            transition: all 0.3s ease;
+        }
+
+        .home-btn:hover {
+            background: linear-gradient(to left, var(--beige-300), #f8d05a);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(239, 191, 4, 0.2);
+        }
+
+        .footer-link {
+            color: var(--primary-blue);
+            position: relative;
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .footer-link:hover::after {
+            width: 100%;
+            left: 0;
+            right: auto;
+        }
+    </style>
+</head>
+
+
+<body class="font-sans">
+
+    <section
+        class="relative pt-16 md:pt-16 md:pb-0 lg:py-24 px-4  min-h-[100vh] md:min-h-[56vh]  lg:min-h-[75vh]  h-auto md:px-20 lg:px-24  justify-center curve-section z-[100]"
+        id="main-section">
+
+        <!-- المحتوى النصي مع تأثيرات الكتابة الجديدة -->
+        <div class="text-center  mb-12 md:mb-0 lg:pr-12 relative" style="z-index: 100;">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6 text-center">
+                <div class="typing-container">
+                    <span id="typing-text" class="typing-text text-yellow-500 my-2"></span>
+                    <span class="typing-cursor"></span>
+                </div>
+                <br>
+            </h1>
+            <p id="second-heading"
+                class="sequence-animate text-yellow-500 text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-center">
+                في ندوة <span class="highlight-text mt-4">آلام الأعصاب السكري</span>
+            </p>
+
+            <!-- العناصر مع تأثيرات الظهور التسلسلي -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 my-6">
+                <div id="card-1"
+                    class="sequence-animate flex items-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 text-white text-lg md:text-xl">
+                    <span class="flex items-center flex-wrap gap-2">
+                        <span class="flex items-center">
+                            <i class="fas fa-calendar-alt ml-2 text-[var(--accent-gold)]"></i>
+                            الخميس 15 يونيو
+                        </span>
+                        <span
+                            class="bg-[var(--primary-color)] text-white font-bold px-3 py-1 rounded-lg flex items-center">
+                            2025
+                        </span>
+                        <span class="flex items-center">
+                            7:00 مساءً (توقيت كندا)
+                        </span>
+                    </span>
+                </div>
+
+                <div id="card-2"
+                    class="sequence-animate bg-gradient-to-l from-[var(--accent-gold)] to-[#f8d05a] text-[var(--primary-color)] font-bold px-6 py-3 rounded-xl text-lg md:text-xl flex items-center text-center">
+                    الندوة على ZOOM
+                </div>
+            </div>
+
+            <p id="whatsapp-msg" 
+            class="sequence-animate mt-4 text-[var(--primary-blue)] text-md md:text-lg font-medium border-2 border-[var(--accent-gold)]/30 bg-gradient-to-r from-[var(--light-blue)]/50 to-[var(--secondary-color)] p-4 rounded-xl inline-block backdrop-blur-lg shadow-lg hover:shadow-[var(--accent-gold)]/20 transition-all duration-300">
+            <i class="fab fa-whatsapp mr-2 text-green-600"></i>
+            ستصلك رسالة تأكيد على <span class="text-green-600">الواتساب</span> تحتوي على <span class="underline">الرابط</span> 
+         </p>
+        </div>
+
+
+        <!-- <div class="flex justify-center w-[100vw] lg:w-1/2">
+            <div class="about-image w-[80vw] md:w-1/3 lg:w-1/2">
+                <div class="doctor-badge-overlay">
+                    <img src="./assets/logo.png" alt="شعار" class="doctor-logo">
+                    <div class="doctor-specialty">
+                        <span class="specialty-main text-[var(--primary-color)] font-bold block"> د/عبدالحميد حمد</span>
+                        <span class="specialty-name text-[var(--primary-blue)] text-sm block">استشاري و خبير علاج
+                            الألم</span>
+                    </div>
+                </div>
+                <img class="doctor-image" src="./assets/IMG0662.png" alt="دكتور  عبد الحميد حمد">
+            </div>
+        </div> -->
+
+        <!-- زر التمرير للأسفل -->
+        <div class="scroll-down">
+            <div class="scroll-down-btn" onclick="scrollToVideo()"></div>
+        </div>
+    </section>
+
+    <!-- قسم الفيديو -->
+    <section class="video-section" id="video-section">
+        <div class="silk-overlay"></div>
+        <div class="container mx-auto px-4 md:px-20 lg:px-32">
+            <div class="video-container">
+                <div class="mb-4 text-center text-white relative bottom-0" style="z-index: 100;">
+                    <p class="text-2xl font-extrabold mb-2">
+                        بانتظاركم في ندوة مميزة
+                      </p>
+                      <p class="text-lg font-semibold mb-1">
+                        يوم 15 يونيو 2025 - الساعة 7:00 مساءً بتوقيت كندا
+                      </p>
+                      <p class="text-lg text-yellow-600 font-bold">
+                        💡 الندوة مجانية بالكامل
+                      </p>
+                </div>
+
+                <div class="video-placeholder">
+                    <video id="webinar-video" controls playsinline style="width: 100%; height: 100%;">
+                        <source src="./assets/thankyou (2).mp4"
+                            type="video/mp4">
+                        <source src="./assets/video.webm" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div id="play-button" class="absolute inset-0 flex items-center justify-center cursor-pointer">
+                        <div class="bg-white/20 backdrop-blur-sm rounded-full p-6 animate-pulse">
+                            <i class="fas fa-play text-white text-4xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer text-white py-12 px-4 md:px-20 lg:px-32 md:max-w-[80vw] mx-auto rounded-xl">
+        <div class="container mx-auto">
+            <!-- الصف العلوي -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
+                <!-- الشعار -->
+                <div class="text-center">
+                    <a href="#" class="inline-block">
+                        <img src="./assets/logo.png" alt="شعار المؤسسة" class="footer-logo h-24 mx-auto">
+                    </a>
+                </div>
+
+                <!-- مواقع التواصل الاجتماعي -->
+                <div class="text-center">
+                    <h3 class="text-lg font-bold mb-4">تابعنا على</h3>
+                    <div class="flex justify-center gap-3">
+                        <a href="https://www.facebook.com/p/%D8%A7%D9%84%D8%AF%D9%83%D8%AA%D9%88%D8%B1-%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D8%AD%D9%85%D9%8A%D8%AF-%D8%AD%D9%85%D8%AF-100091952990054/?locale=ar_AR" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://x.com/abdulhamidhamad?lang=en" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/dr.abdulhamid_hamad/" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCUSHnuKCKYTrd29gm3eXt9g" class="social-icon">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- زر الصفحة الرئيسية -->
+                <div class="text-center">
+                    <a href="index.html"
+                        class="home-btn px-6 py-3 rounded-full font-bold inline-flex items-center gap-2 md:gap-1 lg:gap-2">
+                        <i class="fas fa-home"></i>
+                        الصفحة الرئيسية
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-white my-6"></div>
+
+            <!-- حقوق النشر -->
+            <div class="text-center text-white/70 text-sm">
+                <p>© 2025 جميع الحقوق محفوظة - مركز الدكتور عبدالحميد حمد</p>
+                <p class="mt-1">تصميم وتطوير بواسطة فريق المركز</p>
+            </div>
+    </footer>
+
+    <script>
+        function scrollToVideo() {
+            const videoSection = document.getElementById('video-section');
+            videoSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const video = document.getElementById('webinar-video');
+            const playButton = document.getElementById('play-button');
+
+            // إخفاء زر التشغيل عند بدء الفيديو
+            video.addEventListener('play', function () {
+                playButton.style.display = 'none';
+            });
+
+            // عند النقر على زر التشغيل
+            playButton.addEventListener('click', function () {
+                video.play()
+                    .then(() => {
+                        playButton.style.display = 'none';
+                        video.muted = false; // تفعيل الصوت بعد التفاعل
+                    })
+                    .catch(e => console.log('Play failed:', e));
+            });
+
+            setTimeout(function () {
+                scrollToVideo();
+
+                video.muted = true;
+                video.play()
+                    .then(() => {
+                        playButton.style.display = 'none';
+                        setTimeout(() => video.muted = false, 500);
+                    })
+                    .catch(e => {
+                        console.log('Auto-play was prevented, showing play button');
+                        playButton.style.display = 'flex';
+                    });
+            }, 3000);
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const text = "مبروك لقد نجحت فى التسجيل";
+            const typingElement = document.getElementById('typing-text');
+
+            typingElement.textContent = text;
+
+            setTimeout(() => {
+                typingElement.style.animation = 'typing 2s steps(40, end) forwards';
+                setTimeout(() => {
+                    const cursor = document.querySelector('.typing-cursor');
+                    cursor.style.right = 'auto';
+                    cursor.style.left = '0';
+                    cursor.style.animation = 'none';
+                    setTimeout(() => cursor.style.animation = 'blink 0.7s infinite', 10);
+
+                    animateSequence();
+                }, 500);
+            }, 50);
+
+            function animateSequence() {
+                const elements = [
+                    document.getElementById('second-heading'),
+                    document.getElementById('card-1'),
+                    document.getElementById('card-2'),
+                    document.getElementById('whatsapp-msg')
+                ];
+
+                elements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.add('show');
+                    }, 10 * index);
+                });
+            }
+        });
+    </script>
+    <script src="./scripts/thankyou.js" defer></script>
+</body>
+
+</html>
