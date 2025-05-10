@@ -195,7 +195,22 @@ body {
 /* تحسينات للشاشات المتوسطة */
 @media (min-width: 768px) {
     .video-section {
-        margin-top: -36vh;
+        margin-top: -34vh;
+    }
+
+    .medical-card {
+        height: 30rem;
+        border-radius: 0.25rem;
+        box-shadow:
+            0 0 0 25px rgba(7, 37, 91, 0.7),
+            0 15px 40px rgba(0, 0, 0, 0.386);
+    }
+}
+
+/* تحسينات للشاشات المتوسطة */
+@media (min-width: 1004px) {
+    .video-section {
+        margin-top: -31%;
     }
 
     .medical-card {
@@ -208,9 +223,11 @@ body {
 }
 
 /* تحسينات للشاشات الكبيرة */
-@media (min-width: 1270px) {
+@media (min-width: 1470px) {
     .video-section {
-        margin-top: -52vh;
+        margin-inline: auto;
+        width: 50vw;
+        margin-top: -32vh;
     }
 
     .medical-card {
@@ -1902,6 +1919,8 @@ body {
     /* border-top: 3px solid var(--beige-300); */
     position: relative;
     max-width: 1200px;
+    margin-inline: auto;
+    padding: 1rem;
 }
 
 .footer-logo {

@@ -383,7 +383,21 @@ async function validatePhone() {
     const phoneInput = document.getElementById('phone');
     const errorElement = document.getElementById('phone-error');
     const countryCode = countrySelect.value;
-    const phoneNumber = phoneInput.value.replace(/\D/g, '');
+
+    const arabicToEnglishMap = {
+        '٠': '0', '١': '1', '٢': '2', '٣': '3', '٤': '4',
+        '٥': '5', '٦': '6', '٧': '7', '٨': '8', '٩': '9',
+        '۰': '0', '۱': '1', '۲': '2', '۳': '3', '۴': '4',
+        '۵': '5', '۶': '6', '۷': '7', '۸': '8', '۹': '9'
+    };
+
+    let phoneNumber = phoneInput.value.trim();
+
+    phoneNumber = phoneNumber.split('').map(char => 
+        arabicToEnglishMap[char] || char
+    ).join('');
+
+    phoneNumber = phoneNumber.replace(/\D/g, '');
 
     let isValid = true;
     let errorMessage = '';
@@ -485,7 +499,7 @@ async function validatePhone() {
 
             // أمريكا الشمالية
             case 'US': // الولايات المتحدة
-            case 'CA': // كندا (تمت إضافتها هنا)
+            case 'CA': // كندا
                 if (!/^[2-9]\d{9}$/.test(phoneNumber)) {
                     isValid = false;
                     errorMessage = 'يجب أن يتكون رقم الهاتف من 10 أرقام ولا يبدأ ب 0 أو 1';
@@ -675,11 +689,27 @@ async function handleFormSubmit(e) {
 function getFormData() {
     const countrySelect = document.getElementById('country');
     const selectedCountry = CONFIG.COUNTRIES.find(c => c.code === countrySelect.value);
-    const phoneInput = document.getElementById('phone').value.replace(/\D/g, '');
+    const phoneInput = document.getElementById('phone').value;
+    
+    // خريطة تحويل الأرقام العربية والفارسية إلى إنجليزية
+    const arabicToEnglish = {
+        '٠': '0', '١': '1', '٢': '2', '٣': '3', '٤': '4',
+        '٥': '5', '٦': '6', '٧': '7', '٨': '8', '٩': '9',
+        '۰': '0', '۱': '1', '۲': '2', '۳': '3', '۴': '4',
+        '۵': '5', '۶': '6', '۷': '7', '۸': '8', '۹': '9'
+    };
+    
+    // تحويل الأرقام العربية والفارسية إلى إنجليزية
+    let englishPhone = phoneInput.split('').map(char => 
+        arabicToEnglish[char] || char
+    ).join('');
+    
+    // إزالة جميع الأحرف غير الرقمية
+    englishPhone = englishPhone.replace(/\D/g, '');
 
     return {
         name: document.getElementById('name').value.trim(),
-        whatsapp: `+${selectedCountry.dialCode}${phoneInput}`,
+        whatsapp: `+${selectedCountry.dialCode}${englishPhone}`,
         country: selectedCountry.name,
         website: CONFIG.WEBSITE_NAME
     };
@@ -725,21 +755,21 @@ async function handleSuccess(formData) {
         expiryDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000)
     }));
 
-     // Show loader
+    // Show loader
     const loader = document.getElementById('loader');
     if (loader) loader.style.display = 'block';
 
     try {
-          await downloadPDF(formData.name);
-          window.location.href = 'thankyou.html';
+        await downloadPDF(formData.name);
+        window.location.href = 'thankyou.html';
     } finally {
         loader.style.display = 'none';
     }
 }
 
 async function downloadPDF() {
-    const pdfUrl = '../assets/main.pdf'; 
-    
+    const pdfUrl = '../assets/main.pdf';
+
     try {
         // Fetch the PDF file
         const response = await fetch(pdfUrl);
@@ -754,7 +784,7 @@ async function downloadPDF() {
         // Create download link
         const downloadLink = document.createElement('a');
         downloadLink.href = pdfUrlObject;
-        
+
         downloadLink.download = `ندوة_ألم_الأعصاب_السكري.pdf`;
         downloadLink.style.display = 'none';
 
@@ -770,7 +800,7 @@ async function downloadPDF() {
 
     } catch (error) {
         console.error('PDF download failed:', error);
-        throw error; 
+        throw error;
     }
 }
 
