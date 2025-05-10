@@ -1,8 +1,8 @@
 // Webinar Registration System Config
 const CONFIG = {
-    APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzmuctpf-wvcIimvSykxwCWu9yv0R4ustyJGhAUiL206ojcou6s8X-wdN1UJ6y9gPay/exec",
+    APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbwL8PeYfU-E-OXIoCEVJD-7aD5rXBjQDaTaJgMgGTZT4FD9IcPxBjZxlubUU7QLZPWc/exec",
     WEBINAR_TITLE: "ألم الأعصاب السكري: أحدث طرق التشخيص والعلاج",
-    WEBINAR_DATE: "13 مايو 2025",
+    WEBINAR_DATE: "14 مايو 2025",
     WEBINAR_TIME: "7:00 مساءً بتوقيت مكة المكرمة",
     WEBINAR_LINK: "https://zoom.us/j/123456789",
     COMPANY_NUMBER: "201200241817",
@@ -68,12 +68,12 @@ const WHATSAPP_MESSAGE_TEMPLATE = `مرحباً {name}،
 let lastSubmissionTime = 0;
 
 // Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initForm();
     initCountdown();
     initChat();
     initSwiper();
-    
+
     // Show hidden countdown if exists
     const hiddenCountdown = document.querySelector('.countdown-timer[style="display: none;"]');
     if (hiddenCountdown) {
@@ -154,7 +154,7 @@ function initChat() {
 
     // فتح الشات مع تأثير صوتي
     if (fixedChatBtn) {
-        fixedChatBtn.addEventListener('click', function() {
+        fixedChatBtn.addEventListener('click', function () {
             chatModal.classList.add('active');
             if (messageSound) messageSound.play();
 
@@ -170,21 +170,21 @@ function initChat() {
 
     // زر الواتساب
     if (fixedWhatsappBtn) {
-        fixedWhatsappBtn.addEventListener('click', function() {
+        fixedWhatsappBtn.addEventListener('click', function () {
             window.location.href = 'https://wa.me/14039987830';
         });
     }
 
     // إغلاق الشات
     if (closeChatBtn) {
-        closeChatBtn.addEventListener('click', function() {
+        closeChatBtn.addEventListener('click', function () {
             chatModal.classList.remove('active');
         });
     }
 
     // تصغير الشات
     if (minimizeChatBtn) {
-        minimizeChatBtn.addEventListener('click', function() {
+        minimizeChatBtn.addEventListener('click', function () {
             chatModal.classList.remove('active');
             setTimeout(() => {
                 const badge = fixedChatBtn.querySelector('.notification-badge');
@@ -195,7 +195,7 @@ function initChat() {
 
     // التعامل مع الأسئلة السريعة
     document.querySelectorAll('.quick-question').forEach(question => {
-        question.addEventListener('click', function() {
+        question.addEventListener('click', function () {
             const answerId = this.getAttribute('data-answer');
             const faq = faqData[answerId];
 
@@ -255,10 +255,9 @@ function initChat() {
 
 // Countdown initialization
 function initCountdown() {
-    // Parse Arabic date from CONFIG
-    const webinarDate = parseArabicDate(CONFIG.WEBINAR_DATE + " " + CONFIG.WEBINAR_TIME) || 
-                        new Date('May 13, 2025 19:00:00 GMT+0300');
-    
+    const webinarDate = parseArabicDate(CONFIG.WEBINAR_DATE + " " + CONFIG.WEBINAR_TIME) ||
+        new Date('May 14, 2025 19:00:00 GMT+0300');
+
     function updateCountdown() {
         const now = new Date().getTime();
         const distance = webinarDate - now;
@@ -272,17 +271,17 @@ function initCountdown() {
         document.querySelectorAll('.days').forEach(el => {
             el.textContent = days.toString().padStart(2, '0');
         });
-        
+
         // Update all hours elements
         document.querySelectorAll('.hours').forEach(el => {
             el.textContent = hours.toString().padStart(2, '0');
         });
-        
+
         // Update all minutes elements
         document.querySelectorAll('.minutes').forEach(el => {
             el.textContent = minutes.toString().padStart(2, '0');
         });
-        
+
         // Update all seconds elements
         document.querySelectorAll('.seconds').forEach(el => {
             el.textContent = seconds.toString().padStart(2, '0');
@@ -314,24 +313,24 @@ function parseArabicDate(dateString) {
         'يناير': 0, 'فبراير': 1, 'مارس': 2, 'أبريل': 3, 'مايو': 4, 'يونيو': 5,
         'يوليو': 6, 'أغسطس': 7, 'سبتمبر': 8, 'أكتوبر': 9, 'نوفمبر': 10, 'ديسمبر': 11
     };
-    
+
     const timeParts = {
         'صباحاً': 'AM',
         'مساءً': 'PM'
     };
-    
+
     try {
         const dateMatch = dateString.match(/(\d{1,2})\s+(\S+)\s+(\d{4})\s+(\d{1,2}):(\d{2})\s+(\S+)/);
         if (!dateMatch) return null;
-        
+
         const [, day, arabicMonth, year, hour, minute, timePart] = dateMatch;
         const month = arabicMonths[arabicMonth];
         const ampm = timeParts[timePart] || 'AM';
-        
+
         let hour24 = parseInt(hour);
         if (ampm === 'PM' && hour24 < 12) hour24 += 12;
         if (ampm === 'AM' && hour24 === 12) hour24 = 0;
-        
+
         return new Date(year, month, day, hour24, minute, 0);
     } catch (e) {
         console.error("Error parsing Arabic date:", e);
@@ -347,7 +346,7 @@ function initForm() {
         return;
     }
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
         handleFormSubmit(e).catch(error => {
             console.error('Form submission error:', error);
@@ -483,7 +482,7 @@ async function validatePhone() {
                     errorMessage = 'رقم السودان يجب أن يبدأ ب 91, 92 أو 95 ويتكون من 9 أرقام';
                 }
                 break;
-                
+
             // أمريكا الشمالية
             case 'US': // الولايات المتحدة
             case 'CA': // كندا (تمت إضافتها هنا)
@@ -498,7 +497,7 @@ async function validatePhone() {
                     errorMessage = 'يجب أن يتكون رقم الهاتف من 10 أرقام';
                 }
                 break;
-                
+
             // أوروبا
             case 'GB': // المملكة المتحدة
                 if (!/^7[1-9]\d{8}$/.test(phoneNumber)) {
@@ -530,7 +529,7 @@ async function validatePhone() {
                     errorMessage = 'يجب أن يبدأ رقم الهاتف ب 6 أو 7 ويتكون من 9 أرقام';
                 }
                 break;
-                
+
             // آسيا
             case 'CN': // الصين
                 if (!/^1[3-9]\d{9}$/.test(phoneNumber)) {
@@ -556,7 +555,7 @@ async function validatePhone() {
                     errorMessage = 'يجب أن يبدأ رقم الهاتف ب 010 أو 011 أو 016-019 ويتكون من 9-10 أرقام';
                 }
                 break;
-                
+
             // أفريقيا
             case 'NG': // نيجيريا
                 if (!/^[7-9]\d{9}$/.test(phoneNumber)) {
@@ -576,7 +575,7 @@ async function validatePhone() {
                     errorMessage = 'يجب أن يبدأ رقم الهاتف ب 7 ويتكون من 9 أرقام';
                 }
                 break;
-                
+
             // أمريكا الجنوبية
             case 'BR': // البرازيل
                 if (!/^[1-9]{2}9?[6-9]\d{7}$/.test(phoneNumber)) {
@@ -590,7 +589,7 @@ async function validatePhone() {
                     errorMessage = 'يجب أن يتكون رقم الهاتف من 10 أرقام';
                 }
                 break;
-                
+
             // أوقيانوسيا
             case 'AU': // أستراليا
                 if (!/^04\d{8}$/.test(phoneNumber)) {
@@ -661,7 +660,7 @@ async function handleFormSubmit(e) {
 
     try {
         const result = await submitToGoogleAppsScript(formData);
-        
+
         if (result.status !== 'success') {
             throw new Error(result.message || 'فشل في التسجيل');
         }
@@ -715,7 +714,7 @@ async function submitToGoogleAppsScript(data) {
     }
 }
 
-function handleSuccess(formData) {
+async function handleSuccess(formData) {
     localStorage.setItem('webinarRegistration', JSON.stringify({
         name: formData.name,
         whatsapp: formData.whatsapp,
@@ -723,12 +722,58 @@ function handleSuccess(formData) {
         webinarDate: CONFIG.WEBINAR_DATE,
         webinarTime: CONFIG.WEBINAR_TIME,
         webinarLink: CONFIG.WEBINAR_LINK,
-        expiryDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000)  
+        expiryDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000)
     }));
 
-    // sendWhatsAppMessage(formData.whatsapp, formData.name);
-    window.location.href = 'thankyou.html';
+     // Show loader
+    const loader = document.getElementById('loader');
+    if (loader) loader.style.display = 'block';
+
+    try {
+          await downloadPDF(formData.name);
+          window.location.href = 'thankyou.html';
+    } finally {
+        loader.style.display = 'none';
+    }
 }
+
+async function downloadPDF() {
+    const pdfUrl = '../assets/main.pdf'; 
+    
+    try {
+        // Fetch the PDF file
+        const response = await fetch(pdfUrl);
+        if (!response.ok) {
+            throw new Error('PDF file not found');
+        }
+
+        // Create blob from response
+        const pdfBlob = await response.blob();
+        const pdfUrlObject = URL.createObjectURL(pdfBlob);
+
+        // Create download link
+        const downloadLink = document.createElement('a');
+        downloadLink.href = pdfUrlObject;
+        
+        downloadLink.download = `ندوة_ألم_الأعصاب_السكري.pdf`;
+        downloadLink.style.display = 'none';
+
+        // Trigger download
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+
+        // Clean up
+        setTimeout(() => {
+            document.body.removeChild(downloadLink);
+            URL.revokeObjectURL(pdfUrlObject);
+        }, 100);
+
+    } catch (error) {
+        console.error('PDF download failed:', error);
+        throw error; 
+    }
+}
+
 
 function sendWhatsAppMessage(number, name) {
     try {
@@ -741,7 +786,7 @@ function sendWhatsAppMessage(number, name) {
 
         const cleanNumber = number.replace(/\D/g, '');
         const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
-        
+
         window.open(whatsappUrl, '_blank');
     } catch (error) {
         console.error('Failed to send WhatsApp message:', error);
