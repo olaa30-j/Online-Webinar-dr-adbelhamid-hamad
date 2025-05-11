@@ -760,7 +760,7 @@ async function handleSuccess(formData) {
     if (loader) loader.style.display = 'block';
 
     try {
-        await downloadPDF(formData.name);
+        // await downloadPDF(formData.name);
         window.location.href = 'thankyou.html';
     } finally {
         loader.style.display = 'none';
