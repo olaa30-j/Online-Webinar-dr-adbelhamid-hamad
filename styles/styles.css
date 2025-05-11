@@ -1696,6 +1696,13 @@ body {
     direction: rtl;
 }
 
+@media (max-width: 600px){
+    /* نافذة الشات */
+.chat-modal {
+    width: 320px;
+}
+}
+
 .chat-modal.active {
     transform: translateY(0);
     opacity: 1;
