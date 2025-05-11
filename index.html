@@ -113,19 +113,19 @@
     </div>
   </section>
 
-  <section class="video-section" style=" position: relative; z-index: 10;">
-    <div class="container">
-      <div class="video-container" style="max-width: 66rem; margin: 0 auto;">
-        <div class="medical-card animate-fade-in">
-          <video controls playsinline style="width: 100%; height: 100%;">
-            <source src="./assets/mainv.mp4" type="video/mp4">
-            <source src="./assets/video.webm" type="video/webm">
-            Your browser does not support the video tag.
-          </video>
-        </div>
+  <section class="video-section" style="position: relative; z-index: 10;">
+  <div class="container">
+    <div class="video-container" style="max-width: 66rem; margin: 0 auto;">
+      <div class="medical-card animate-fade-in">
+        <video id="myVideo" playsinline style="width: 100%; height: 100%; background-position: center; background-size: contain;">
+          <source src="https://res.cloudinary.com/dqkncgdbv/video/upload/v1746975968/mainv_vdkmzl.mp4" type="video/mp4">
+          <source src="./assets/video.webm" type="video/webm">
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <section class="about-area">
     <div class="about-image">
@@ -453,7 +453,38 @@
   </footer>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="./scripts/scripts.js" defer></script>
-
+<script>
+  const video = document.getElementById('myVideo');
+  
+  // عند النقر على الفيديو
+  video.addEventListener('click', function() {
+    // إذا كان الفيديو متوقفاً، نبدأ التشغيل أولاً
+    if (video.paused) {
+      video.play().then(() => {
+        // بعد التشغيل، نفتح الشاشة الكاملة
+        openFullscreen();
+      }).catch(error => {
+        console.log("فشل التشغيل:", error);
+      });
+    } else {
+      // إذا كان الفيديو يعمل، نفتح الشاشة الكاملة مباشرة
+      openFullscreen();
+    }
+  });
+  
+  // دالة لفتح الشاشة الكاملة
+  function openFullscreen() {
+    if (video.requestFullscreen) {
+      video.requestFullscreen().catch(err => {
+        console.log("فشل فتح الشاشة الكاملة:", err);
+      });
+    } else if (video.webkitRequestFullscreen) { // للسفاري
+      video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) { // لـ IE/Edge
+      video.msRequestFullscreen();
+    }
+  }
+</script>
 </body>
 
 </html>
